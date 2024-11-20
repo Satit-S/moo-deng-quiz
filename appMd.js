@@ -64,9 +64,9 @@ const resultEl = document.getElementById("result");
 const timerEl = document.getElementById("timer");
 
 function loadQuestion() {
-    questionEl.innerText = questions[currentQuestion].question;
+    questionEl.innerText = shuffledQuestions[currentQuestion].question;
     optionsEl.innerHTML = "";
-    questions[currentQuestion].options.forEach(option => {
+    shuffledQuestions[currentQuestion].options.forEach(option => {
         const btn = document.createElement("button");
         btn.innerText = option;
         btn.onclick = () => checkAnswer(option);
@@ -81,11 +81,12 @@ function checkAnswer(selected) {
     buttons.forEach(button => {
         button.disabled = true;
     })
-    if (selected === questions[currentQuestion].answer) {
+    if (selected === shuffledQuestions[currentQuestion].answer) {
         score++;
         resultEl.innerText = "Correct!";
     } else {
         resultEl.innerText = "Try Again!";
+        resultEl.innerText = `Answer is ${shuffledQuestions[currentQuestion].answer}`
     }
     scoreEl.innerText = `Score: ${score}`;
     document.getElementById("next-btn").style.display = "block";
@@ -127,6 +128,7 @@ function endGame() {
 document.getElementById("start").addEventListener("click", () => {
 document.getElementById("start").style.display = "none"; 
 document.getElementById("next-btn").style.display = "block";
+shuffledQuestions = shuffle(questions.slice());
 loadQuestion();
 });
 
@@ -150,3 +152,12 @@ function startTimer() {
             nextQuestion(); 
         } }, 1000);
     }
+
+function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+}
+       
