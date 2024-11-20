@@ -1,8 +1,8 @@
 const questions = [
     {
         question: "What type of animal is Moo Deng?",
-        options: ["hippocampus", "Pygmy hippo", "Bird"],
-        answer: "Pygmy hippo"
+        options: ["Hippocampus", "Pygmy Hippo", "Bird"],
+        answer: "Pygmy Hippo"
     },
     {
         question: "What is Moo Deng's signature color?",
@@ -85,8 +85,7 @@ function checkAnswer(selected) {
         score++;
         resultEl.innerText = "Correct!";
     } else {
-        resultEl.innerText = "Try Again!";
-        resultEl.innerText = `Answer is ${shuffledQuestions[currentQuestion].answer}`
+        resultEl.innerHTML = "Try Again! <br>Answer is " + shuffledQuestions[currentQuestion].answer
     }
     scoreEl.innerText = `Score: ${score}`;
     document.getElementById("next-btn").style.display = "block";
