@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #fffde0 ;
+    background-color: #fff ;
     background-image: url('images/moodeng.jpg'); 
     background-size: cover;
     background-position: center;
@@ -87,6 +87,8 @@ button:hover {
 
 @media (max-width: 768px) {
     body {
+        background-size: contain;
+        background-position: top center;
         height: auto;
         padding: 10px;
     }
