@@ -144,7 +144,9 @@ function startTimer() {
     timer = setInterval(() => { 
         timeLeft--; 
         timerEl.innerText = `Time: ${timeLeft}`; 
-        if (timeLeft <= 0) { clearInterval(timer); 
+        if (timeLeft <= 0) { 
+            clearInterval(timer); 
+            alert("TIME OUT!! and go to NEXT")               
             nextQuestion(); 
         } }, 1000);
     }
